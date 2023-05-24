@@ -16,7 +16,6 @@ declare module '@vue/runtime-core' {
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElRow: typeof import('element-plus/es')['ElRow']
-    IEpSearch: typeof import('~icons/ep/search')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
