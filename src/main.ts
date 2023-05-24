@@ -7,8 +7,15 @@ const app = createApp(App)
 import 'virtual:svg-icons-register'
 //引入自定义插件对象，注册项目全局组件
 import globalComponents from '@/components'
+//导入路由
+import router from '@/router'
+//引入仓库
+import pinia from './store'
 //安装自定义插件
 app.use(globalComponents)
-
+//使用仓库
+app.use(pinia)
+//使用路由
+app.use(router)
 //将应用挂载到挂载点上
 app.mount('#app')

@@ -6,7 +6,8 @@ export interface reqLoginData {
 
 // 登录接口返回的数据类型
 interface dataType {
-  token: String
+  token?: String
+  message?: String
 }
 export interface resLoginData {
   code: number
