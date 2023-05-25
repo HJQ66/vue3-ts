@@ -11,6 +11,12 @@ import globalComponents from '@/components'
 import router from '@/router'
 //引入仓库
 import pinia from './store'
+//引入element-ui的所有图标
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+// 遍历使用所有图标
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 //安装自定义插件
 app.use(globalComponents)
 //使用仓库

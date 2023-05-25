@@ -3,8 +3,12 @@
     <el-row>
       <el-col :span="12" :offset="0"></el-col>
       <el-col :span="12" :offset="0">
-        <el-form ref="login_form" class="login_form" :model="loginForm"
-    :rules="rules">
+        <el-form
+          ref="loginFormRef"
+          class="login_form"
+          :model="loginForm"
+          :rules="rules"
+        >
           <h1>Hello</h1>
           <h2>欢迎来到后台管理</h2>
           <el-form-item prop="username">
@@ -28,7 +32,7 @@
             <el-button
               class="login_btn"
               type="primary"
-              @click="login"
+              @click="login(loginFormRef)"
               :loading="isLoading"
             >
               登录
@@ -46,7 +50,7 @@ import { User, Lock } from '@element-plus/icons-vue'
 //引入用户相关的小仓库
 import { useUserStore } from '@/store/module/user'
 import { useRouter } from 'vue-router'
-import type { FormInstance, FormRules } from 'element-plus'
+import { FormRules, FormInstance } from 'element-plus'
 
 //导入获取时间函数
 import getTime from '@/utils/time'
@@ -61,37 +65,53 @@ let isLoading = ref(false)
 const $router = useRouter()
 
 const rules = reactive<FormRules>({
-  username: {required:true,min: 5, max: 10,message:'输入的用户名在5-10位！',trigger:'change'},
-  password:{required:true,min:6,max:10,message:'输入的密码在6-10位！',trigger:'change'}
+  username: {
+    required: true,
+    min: 5,
+    max: 10,
+    message: '输入的用户名在5-10位！',
+    trigger: 'change',
+  },
+  password: {
+    required: true,
+    min: 6,
+    max: 10,
+    message: '输入的密码在6-10位！',
+    trigger: 'change',
+  },
 })
-const login_form = ref<FormInstance>()
+const loginFormRef = ref<FormInstance>()
 //登录按钮
-const login = async () => {
-  
-  //开启登录按钮加载
-  isLoading.value = true
-  try {
-    //返回的是一个promise
-    await userStore.userLogin(loginForm)
-    //登录成功跳转到首页
-    $router.push('/')
-    // 登录成功提示框
-    ElNotification({
-      type: 'success',
-      title:`Hi，${getTime()}好`,
-      message: '欢迎回来',
-    })
-    //结束登录按钮加载
-    isLoading.value = false
-  } catch (error) {
-    //登录失败提示框
-    ElNotification({
-      type: 'error',
-      message: error,
-    })
-    //结束登录按钮加载
-    isLoading.value = false
-  }
+const login = (loginFormRef: FormInstance | undefined) => {
+  if (!loginFormRef) return
+  loginFormRef.validate(async (valid: boolean) => {
+    if (valid) {
+      //开启登录按钮加载
+      isLoading.value = true
+      try {
+        //返回的是一个promise
+        await userStore.userLogin(loginForm)
+        //登录成功跳转到首页
+        $router.push('/')
+        // 登录成功提示框
+        ElNotification({
+          type: 'success',
+          title: `Hi，${getTime()}好`,
+          message: '欢迎回来',
+        })
+        //结束登录按钮加载
+        isLoading.value = false
+      } catch (error) {
+        //登录失败提示框
+        ElNotification({
+          type: 'error',
+          message: error,
+        })
+        //结束登录按钮加载
+        isLoading.value = false
+      }
+    }
+  })
 }
 </script>
 

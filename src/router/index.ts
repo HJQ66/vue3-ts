@@ -1,7 +1,7 @@
 //通过vue-router实现模板路由配置
 import { createRouter, createWebHashHistory } from 'vue-router'
 //导入常量路由
-import constantRouter from './constantRouter'
+import { constantRouter } from './routes'
 
 //创建路由
 const router = createRouter({

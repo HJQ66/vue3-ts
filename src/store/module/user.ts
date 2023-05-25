@@ -4,12 +4,15 @@ import { login } from '@/api/user'
 import { GET_TOKEN, SET_TOKEN } from '@/utils/getLocalData'
 //引入类型
 import type { reqLoginData, resLoginData } from '@/api/user/type'
+//引入路由对象
+import { constantRouter } from '@/router/routes'
 // useStore 可以是 useUser、useCart 之类的任何东西
 // 第一个参数是应用程序中 store 的唯一 id
 export const useUserStore = defineStore('user', {
   state: () => {
     return {
       token: GET_TOKEN(),
+      routes: constantRouter, //将路由对象存储到pinia中
     }
   },
   actions: {
