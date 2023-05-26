@@ -1,5 +1,6 @@
 //配置axios
 import axios from 'axios'
+import { GET_TOKEN } from './getLocalData'
 
 //创建axios服务对象
 const request = axios.create({
@@ -11,6 +12,8 @@ const request = axios.create({
 //设置请求拦截器
 request.interceptors.request.use((config) => {
   //需要返回配置对象
+  //请求拦截器中给请求头携带token,每次请求携带
+  config.headers.token = GET_TOKEN()
   return config
 })
 

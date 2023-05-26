@@ -8,6 +8,11 @@
 <script setup lang="ts">
 import titleInfo from '../../../setting'
 </script>
+<script lang="ts">
+export default {
+  name: 'Logo',
+}
+</script>
 
 <style scoped lang="scss">
 .logo_container {
@@ -15,7 +20,7 @@ import titleInfo from '../../../setting'
   width: 100%;
   display: flex;
   align-items: center;
-  padding-left: 15px;
+  padding-left: 10px;
   box-sizing: border-box;
   img {
     width: $base_logo_width;

@@ -1,47 +1,31 @@
 <template>
   <div class="layout_container">
     <!-- 左侧导航栏 -->
-    <div class="layout_slider">
+    <div class="layout_slider" :class="menuStore.isFold ? 'isFold' : ''">
       <Logo />
       <el-scrollbar class="scrollbar">
         <el-menu
-          class="el-menu-vertical-demo menu"
-          @open="handleOpen"
-          @close="handleClose"
-          background-color="$base_menu_color"
+          class="el-menu-vertical-demo"
+          background-color="#001529"
           text-color="#fff"
-          default-active=""
+          :collapse="menuStore.isFold"
         >
           <Menu :constantRouter="userStore.routes" />
         </el-menu>
       </el-scrollbar>
     </div>
     <!-- 上方导航栏 -->
-    <div class="layout_tabbar">
+    <div class="layout_tabbar" :class="menuStore.isFold ? 'isFold' : ''">
       <div class="left_tabbar">
-        <!-- 点击展开关闭左侧导航栏 -->
-        <el-icon class="icon">
-          <Expand />
-        </el-icon>
-        <!-- 面包屑 -->
-        <el-breadcrumb separator-icon="ArrowRight" class="bread">
-          <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-          <el-breadcrumb-item>菜单管理</el-breadcrumb-item>
-        </el-breadcrumb>
+        <BreadCrumb />
       </div>
       <div class="right_tabbar">
-        <el-button size="small" icon="Refresh" @click="" circle></el-button>
-        <el-button size="small" icon="FullScreen" @click="" circle></el-button>
-        <img
-          src="../../public/logo.png"
-          style="width: 24px; height: 24px"
-          alt=""
-        />
+        <RightTabbar />
       </div>
     </div>
     <!-- 页面内容区域 -->
-    <div class="layout_main">
-      <router-view></router-view>
+    <div class="layout_main" :class="menuStore.isFold ? 'isFold' : ''">
+      <Main />
     </div>
   </div>
 </template>
@@ -49,19 +33,18 @@
 <script setup lang="ts">
 import Logo from './Logo/index.vue'
 import Menu from './Menu/index.vue'
-import { useRouter } from 'vue-router'
+import BreadCrumb from './Tabbar/BreadCrumb/index.vue'
+import RightTabbar from './Tabbar/RightTabbar/index.vue'
+import Main from './Main/index.vue'
 //从pinia中获取路由表，动态生成菜单栏
 import { useUserStore } from '@/store/module/user'
+import { useMenuStore } from '@/store/module/menu'
 const userStore = useUserStore()
-
-const $router = useRouter()
-
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-  $router.push(key)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+const menuStore = useMenuStore()
+</script>
+<script lang="ts">
+export default {
+  name: 'Layout',
 }
 </script>
 
@@ -69,14 +52,18 @@ const handleClose = (key: string, keyPath: string[]) => {
 .layout_container {
   width: 100%;
   height: 100vh;
-  // background-color: red;
   .layout_slider {
     width: $base_menu_width;
     height: 100vh;
     background-color: $base_menu_color;
+    transition: all 0.3s;
+    &.isFold {
+      width: $base_menu_min_width;
+    }
 
     .scrollbar {
       height: calc(100% - $base_menu_title_height);
+
       .el-menu {
         border-right: none;
       }
@@ -90,6 +77,11 @@ const handleClose = (key: string, keyPath: string[]) => {
     width: calc(100% - $base_menu_width);
     display: flex;
     justify-content: space-between;
+    transition: all 0.3s;
+    &.isFold {
+      width: calc(100% - $base_menu_min_width);
+      left: $base_menu_min_width;
+    }
     .left_tabbar {
       display: flex;
       align-items: center;
@@ -98,10 +90,6 @@ const handleClose = (key: string, keyPath: string[]) => {
       display: flex;
       align-items: center;
     }
-    .icon {
-      margin: 0 10px;
-    }
-
     .bread {
       color: black;
     }
@@ -114,6 +102,11 @@ const handleClose = (key: string, keyPath: string[]) => {
     left: $base_menu_width;
     top: $base_tabbar_height;
     overflow: auto;
+    transition: all 0.3s;
+    &.isFold {
+      width: calc(100% - $base_menu_min_width);
+      left: $base_menu_min_width;
+    }
   }
 }
 </style>

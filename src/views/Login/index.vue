@@ -49,22 +49,22 @@ import { reactive, ref } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
 //引入用户相关的小仓库
 import { useUserStore } from '@/store/module/user'
-import { useRouter } from 'vue-router'
-import { FormRules, FormInstance } from 'element-plus'
+import { useRouter, useRoute } from 'vue-router'
 
 //导入获取时间函数
 import getTime from '@/utils/time'
 
 let userStore = useUserStore()
+//获取路由器
+const $router = useRouter()
+const $route = useRoute()
 
 //登录相关信息表单
 const loginForm = reactive({ username: '', password: '' })
 //是否加载
 let isLoading = ref(false)
-//获取路由器
-const $router = useRouter()
 
-const rules = reactive<FormRules>({
+const rules = reactive({
   username: {
     required: true,
     min: 5,
@@ -80,9 +80,9 @@ const rules = reactive<FormRules>({
     trigger: 'change',
   },
 })
-const loginFormRef = ref<FormInstance>()
+const loginFormRef = ref()
 //登录按钮
-const login = (loginFormRef: FormInstance | undefined) => {
+const login = (loginFormRef: any) => {
   if (!loginFormRef) return
   loginFormRef.validate(async (valid: boolean) => {
     if (valid) {
@@ -91,8 +91,12 @@ const login = (loginFormRef: FormInstance | undefined) => {
       try {
         //返回的是一个promise
         await userStore.userLogin(loginForm)
-        //登录成功跳转到首页
-        $router.push('/')
+        //调用获取用户信息接口
+        await userStore.getUserInfo()
+        //登录成功跳转到首页  (当前路由有参数，就跳转到该参数路由，没有参数就跳转到首页)
+        const { redirect } = $route.query
+        $router.push(`${redirect}` || '/')
+
         // 登录成功提示框
         ElNotification({
           type: 'success',

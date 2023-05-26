@@ -5,9 +5,9 @@ export const constantRouter = [
     name: 'Layout',
     component: () => import('@/layout/index.vue'),
     meta: {
-      title: 'layout',
+      title: '',
       hidden: false, //在菜单栏中是否隐藏
-      icon: 'Aim', //菜单栏左侧的图标，支持element-plus里面的所有图标
+      icon: '', //菜单栏左侧的图标，支持element-plus里面的所有图标
     },
     redirect: '/home',
     children: [
