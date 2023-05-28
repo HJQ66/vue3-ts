@@ -8,13 +8,13 @@
   ></el-button>
   <el-button size="small" icon="Setting" @click="" circle></el-button>
   <img
-    :src="userStore.userInfo.userAvatar"
+    :src="userStore.userAvatar"
     style="width: 24px; height: 24px; border-radius: 50%"
     alt=""
   />
   <el-dropdown trigger="click" class="dropdown">
     <span class="el-dropdown-link">
-      {{ userStore.userInfo.username }}
+      {{ userStore.userName }}
       <el-icon class="el-icon--right"><arrow-down /></el-icon>
     </span>
     <template #dropdown>
@@ -52,10 +52,9 @@ const fullScreen = () => {
 }
 
 //退出登录
-const onLoginOut = () => {
+const  onLoginOut = async () => {
   //调用store里面的方法退出登录
-  userStore.loginOut()
-  console.log($route.path)
+  await userStore.loginOut()
 
   //路由跳转
   $router.push({

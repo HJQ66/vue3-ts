@@ -9,11 +9,13 @@ const request = axios.create({
   timeout: 5000, //设置请求超时时间
 })
 
+
 //设置请求拦截器
 request.interceptors.request.use((config) => {
   //需要返回配置对象
   //请求拦截器中给请求头携带token,每次请求携带
-  config.headers.token = GET_TOKEN()
+  let TOKEN = GET_TOKEN()
+  TOKEN && (config.headers.token = TOKEN)
   return config
 })
 
@@ -45,7 +47,7 @@ request.interceptors.response.use(
         message = '网络出现问题'
     }
     //返回失败的回调
-    return Promise.reject(error)
+    return Promise.reject(message)
   },
 )
 

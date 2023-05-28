@@ -15,6 +15,10 @@ import pinia from './store'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 //引入路由鉴权
 import './permission'
+//引入全局自定义指令，控制按钮权限
+import { isHasButton } from './directive/has'
+//调用该方法传入app
+isHasButton(app)
 // 遍历使用所有图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)

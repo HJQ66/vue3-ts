@@ -9,7 +9,7 @@ export const constantRouter = [
       hidden: false, //在菜单栏中是否隐藏
       icon: '', //菜单栏左侧的图标，支持element-plus里面的所有图标
     },
-    redirect: '/home',
+    redirect:'/home',
     children: [
       {
         path: '/home',
