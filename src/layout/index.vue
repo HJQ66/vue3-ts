@@ -56,7 +56,6 @@ export default {
     width: $base_menu_width;
     height: 100vh;
     background-color: $base_menu_color;
-    transition: all 0.3s;
     &.isFold {
       width: $base_menu_min_width;
     }
@@ -77,7 +76,7 @@ export default {
     width: calc(100% - $base_menu_width);
     display: flex;
     justify-content: space-between;
-    transition: all 0.3s;
+    transition: all 0.15s;
     &.isFold {
       width: calc(100% - $base_menu_min_width);
       left: $base_menu_min_width;
@@ -102,7 +101,7 @@ export default {
     left: $base_menu_width;
     top: $base_tabbar_height;
     overflow: auto;
-    transition: all 0.3s;
+    transition: all 0.15s;
     &.isFold {
       width: calc(100% - $base_menu_min_width);
       left: $base_menu_min_width;
