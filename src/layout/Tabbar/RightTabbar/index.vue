@@ -52,7 +52,7 @@ const fullScreen = () => {
 }
 
 //退出登录
-const  onLoginOut = async () => {
+const onLoginOut = async () => {
   //调用store里面的方法退出登录
   await userStore.loginOut()
 

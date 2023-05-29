@@ -9,7 +9,6 @@ const request = axios.create({
   timeout: 5000, //设置请求超时时间
 })
 
-
 //设置请求拦截器
 request.interceptors.request.use((config) => {
   //需要返回配置对象

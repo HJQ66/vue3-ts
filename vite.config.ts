@@ -1,4 +1,4 @@
-import { defineConfig,loadEnv  } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 // mock插件提供方法
 import { viteMockServe } from 'vite-plugin-mock'
@@ -13,16 +13,16 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 //路径模块
 import path from 'path'
-export default defineConfig(({ command,mode }) => {
+export default defineConfig(({ command, mode }) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
   // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
   //获取不同环境下的环境变量
   const env = loadEnv(mode, process.cwd(), '')
-  
+
   return {
     //代理跨域
-    server:{
-      proxy:{
+    server: {
+      proxy: {
         [env.VITE_APP_BASE_API]: {
           //获取当前环境下请求接口的地址
           target: env.VITE_SERVE,
@@ -31,7 +31,7 @@ export default defineConfig(({ command,mode }) => {
           //路径重写
           rewrite: (path) => path.replace(/^\/api/, ''),
         },
-      }
+      },
     },
     resolve: {
       alias: {

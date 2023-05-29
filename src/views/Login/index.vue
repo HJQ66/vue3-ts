@@ -91,7 +91,7 @@ const login = (loginFormRef: any) => {
       try {
         //返回的是一个promise
         await userStore.userLogin(loginForm)
-        
+
         //登录成功跳转到首页  (当前路由有参数，就跳转到该参数路由，没有参数就跳转到首页)
         const { redirect } = $route.query
         $router.push(`${redirect}` || '/')

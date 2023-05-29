@@ -1,7 +1,7 @@
-export interface userState{
-    token:string, 
-    routes: any, 
-    userName:string,
-    userAvatar:string,
-    buttons:string[]
+export interface userState {
+  token: string
+  routes: any
+  userName: string
+  userAvatar: string
+  buttons: string[]
 }
