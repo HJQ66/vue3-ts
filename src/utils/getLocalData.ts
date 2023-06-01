@@ -27,3 +27,20 @@ export const GET_USERINFO = () => {
 export const REMOVE_USERINFO = () => {
   localStorage.removeItem('USERINFO')
 }
+
+//获取主题颜色
+export const GET_THEAMCOLOR = () => {
+  return localStorage.getItem('THEAMCOLOR')
+}
+//设置主题颜色
+export const SET_THEAMCOLOR = (color: string) => {
+  localStorage.setItem('THEAMCOLOR', color)
+}
+//获取是否为暗黑模式
+export const GET_ISDARK = () => {
+  return localStorage.getItem('ISDARK')
+}
+//设置是否为暗黑模式
+export const SET_ISDARK = (isDark: string) => {
+  localStorage.setItem('ISDARK', isDark)
+}

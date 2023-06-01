@@ -1,5 +1,7 @@
 <template>
-  <div>用户管理</div>
+  <div>
+    <el-button type="primary" size="default" @click="">按钮测试</el-button>
+  </div>
 </template>
 
 <script setup lang="ts"></script>

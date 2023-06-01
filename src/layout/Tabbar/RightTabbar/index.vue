@@ -6,7 +6,7 @@
     @click="fullScreen"
     circle
   ></el-button>
-  <el-button size="small" icon="Setting" @click="" circle></el-button>
+  <el-button size="small" icon="Setting" @click="onDrawer" circle></el-button>
   <img
     :src="userStore.userAvatar"
     style="width: 24px; height: 24px; border-radius: 50%"
@@ -23,14 +23,39 @@
       </el-dropdown-menu>
     </template>
   </el-dropdown>
+  <!-- 点击设置按钮 抽屉 -->
+  <el-drawer v-model="drawer" title="主题设置" :with-header="true" size="300">
+    <el-form>
+      <el-form-item label="主题色设置:">
+        <el-color-picker
+          v-model="settingStore.theamColor"
+          @change="setThemeColor"
+        />
+      </el-form-item>
+      <el-form-item label="暗黑模式:">
+        <el-switch
+          v-model="settingStore.isDark"
+          class="mt-2"
+          style="margin-left: 24px"
+          inline-prompt
+          active-icon="Moon"
+          inactive-icon="Sunny"
+          @change="changeIsDark"
+        />
+      </el-form-item>
+    </el-form>
+  </el-drawer>
 </template>
 
 <script setup lang="ts">
 import { useMenuStore } from '@/store/module/menu'
 import { useUserStore } from '@/store/module/user'
+import { useSettingStore } from '@/store/module/setting'
 import { useRouter, useRoute } from 'vue-router'
+import { ref } from 'vue'
 const menuStore = useMenuStore()
 const userStore = useUserStore()
+const settingStore = useSettingStore()
 const $router = useRouter()
 const $route = useRoute()
 
@@ -64,6 +89,23 @@ const onLoginOut = async () => {
     },
   })
 }
+
+//控制抽屉显示与隐藏
+const drawer = ref(false)
+const onDrawer = () => {
+  drawer.value = !drawer.value
+}
+
+//像这种主题颜色的配置，暗黑模式的开启官方文档都有说明
+//主题色
+//主题颜色设置
+const setThemeColor = (val: string) => {
+  settingStore.setTheamColor(val)
+}
+//是否开启暗黑模式
+const changeIsDark = (val: boolean) => {
+  settingStore.setIsDark(val)
+}
 </script>
 <script lang="ts">
 export default {
@@ -71,7 +113,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 img {
   margin: 0 10px;
 }

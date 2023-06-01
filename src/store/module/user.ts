@@ -37,7 +37,6 @@ export const useUserStore = defineStore('user', {
     //获取用户信息的action
     async getUserInfo() {
       let result: resUserData = await reqLoginUserInfo()
-      console.log(result)
       if (result.code === 200) {
         this.userAvatar = result.data.avatar
         this.userName = result.data.name
@@ -50,7 +49,6 @@ export const useUserStore = defineStore('user', {
     //退出登录
     async loginOut() {
       let result = await reqLoginOut()
-      console.log(result)
       if (result.code === 200) {
         this.token = ''
         this.userAvatar = ''

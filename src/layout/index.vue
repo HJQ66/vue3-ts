@@ -77,6 +77,8 @@ export default {
     display: flex;
     justify-content: space-between;
     transition: all 0.15s;
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
     &.isFold {
       width: calc(100% - $base_menu_min_width);
       left: $base_menu_min_width;
@@ -96,7 +98,9 @@ export default {
   .layout_main {
     width: calc(100% - $base_menu_width);
     height: calc(100% - $base_tabbar_height);
-    background-color: greenyellow;
+    // background-color: greenyellow;
+    box-sizing: border-box;
+    padding: 20px;
     position: absolute;
     left: $base_menu_width;
     top: $base_tabbar_height;

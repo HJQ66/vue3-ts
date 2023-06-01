@@ -7,6 +7,8 @@ const app = createApp(App)
 import 'virtual:svg-icons-register'
 //引入自定义插件对象，注册项目全局组件
 import globalComponents from '@/components'
+//导入暗黑模式css变量
+import 'element-plus/theme-chalk/dark/css-vars.css'
 //导入路由
 import router from '@/router'
 //引入仓库
