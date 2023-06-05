@@ -9,7 +9,7 @@ export const useSettingStore = defineStore('settingStore', {
   state: () => {
     return {
       theamColor: GET_THEAMCOLOR() || '#409EFF',
-      isDark: Boolean(GET_ISDARK()) || false,
+      isDark: Boolean(JSON.parse(GET_ISDARK() as string)) || false,
     }
   },
   actions: {

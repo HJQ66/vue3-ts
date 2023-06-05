@@ -7,6 +7,15 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: registry.npmmirror.com/axios@1.4.0
+  dayjs:
+    specifier: ^1.11.8
+    version: registry.npmmirror.com/dayjs@1.11.8
+  echarts:
+    specifier: ^5.4.2
+    version: registry.npmmirror.com/echarts@5.4.2
+  echarts-liquidfill:
+    specifier: ^3.1.0
+    version: registry.npmmirror.com/echarts-liquidfill@3.1.0(echarts@5.4.2)
   element-plus:
     specifier: ^2.3.5
     version: registry.npmmirror.com/element-plus@2.3.5(vue@3.2.47)
@@ -2705,10 +2714,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  registry.npmmirror.com/dayjs@1.11.7:
-    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dayjs/-/dayjs-1.11.7.tgz}
+  registry.npmmirror.com/dayjs@1.11.8:
+    resolution: {integrity: sha512-LcgxzFoWMEPO7ggRv1Y2N31hUf2R0Vj7fuy/m+Bg1K8rr+KAs1AEy4y9jd5DXe8pbHgX+srkHNS7TH6Q6ZhYeQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dayjs/-/dayjs-1.11.8.tgz}
     name: dayjs
-    version: 1.11.7
+    version: 1.11.8
     dev: false
 
   registry.npmmirror.com/de-indent@1.0.2:
@@ -2998,6 +3007,26 @@ packages:
       is-obj: registry.npmmirror.com/is-obj@2.0.0
     dev: true
 
+  registry.npmmirror.com/echarts-liquidfill@3.1.0(echarts@5.4.2):
+    resolution: {integrity: sha512-5Dlqs/jTsdTUAsd+K5LPLLTgrbbNORUSBQyk8PSy1Mg2zgHDWm83FmvA4s0ooNepCJojFYRITTQ4GU1UUSKYLw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts-liquidfill/-/echarts-liquidfill-3.1.0.tgz}
+    id: registry.npmmirror.com/echarts-liquidfill/3.1.0
+    name: echarts-liquidfill
+    version: 3.1.0
+    peerDependencies:
+      echarts: ^5.0.1
+    dependencies:
+      echarts: registry.npmmirror.com/echarts@5.4.2
+    dev: false
+
+  registry.npmmirror.com/echarts@5.4.2:
+    resolution: {integrity: sha512-2W3vw3oI2tWJdyAz+b8DuWS0nfXtSDqlDmqgin/lfzbkB01cuMEN66KWBlmur3YMp5nEDEEt5s23pllnAzB4EA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts/-/echarts-5.4.2.tgz}
+    name: echarts
+    version: 5.4.2
+    dependencies:
+      tslib: registry.npmmirror.com/tslib@2.3.0
+      zrender: registry.npmmirror.com/zrender@5.4.3
+    dev: false
+
   registry.npmmirror.com/ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ee-first/-/ee-first-1.1.1.tgz}
     name: ee-first
@@ -3026,7 +3055,7 @@ packages:
       '@types/lodash-es': registry.npmmirror.com/@types/lodash-es@4.17.7
       '@vueuse/core': registry.npmmirror.com/@vueuse/core@9.13.0(vue@3.2.47)
       async-validator: registry.npmmirror.com/async-validator@4.2.5
-      dayjs: registry.npmmirror.com/dayjs@1.11.7
+      dayjs: registry.npmmirror.com/dayjs@1.11.8
       escape-html: registry.npmmirror.com/escape-html@1.0.3
       lodash: registry.npmmirror.com/lodash@4.17.21
       lodash-es: registry.npmmirror.com/lodash-es@4.17.21
@@ -7531,6 +7560,12 @@ packages:
     version: 1.14.1
     dev: true
 
+  registry.npmmirror.com/tslib@2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.3.0.tgz}
+    name: tslib
+    version: 2.3.0
+    dev: false
+
   registry.npmmirror.com/tsutils@3.21.0(typescript@5.0.2):
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tsutils/-/tsutils-3.21.0.tgz}
     id: registry.npmmirror.com/tsutils/3.21.0
@@ -8248,3 +8283,11 @@ packages:
     name: yocto-queue
     version: 0.1.0
     engines: {node: '>=10'}
+
+  registry.npmmirror.com/zrender@5.4.3:
+    resolution: {integrity: sha512-DRUM4ZLnoaT0PBVvGBDO9oWIDBKFdAVieNWxWwK0niYzJCMwGchRk21/hsE+RKkIveH3XHCyvXcJDkgLVvfizQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/zrender/-/zrender-5.4.3.tgz}
+    name: zrender
+    version: 5.4.3
+    dependencies:
+      tslib: registry.npmmirror.com/tslib@2.3.0
+    dev: false
